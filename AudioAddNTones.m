@@ -3,8 +3,8 @@
 %Entrada: audio_in.wav
 %Salida: audio_out.wav
 %--------------------------------------------------------------------------
-inFileName='./Audio/Muestras/audio_in.wav';
-outFileName='./Audio/Procesado/audio_out.wav';
+inFileName='./Audio/Muestras/audio_1.wav';
+outFileName='./Audio/Procesado/audio_out!.wav';
 toneFreqs = [50,500,1000]; %Vector de n tonos agreagados al archivo de entrada
 OUTNbits=16; %16 bits
 OUTFs = 16000;      
@@ -25,6 +25,9 @@ for i=1:length(toneFreqs)
 yAudioOut = yAudioOut + sin(linspace(0, info.Duration*toneFreqs(i)*2*pi, length(yAudioRead))');
 end
 yAudioOut=yAudioOut/(nFreqs+1);
+FreqString=int2str(toneFreqs);
+FreqString=strrep(FreqString, '  ', '-');
+outFileName=strrep(outFileName, '!', FreqString);
 audiowrite(outFileName,yAudioOut,OUTFs, 'BitsPerSample',OUTNbits);
 %--------------------------------------------------------------------------
 
