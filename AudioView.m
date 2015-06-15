@@ -2,7 +2,9 @@
 %Visualiza forma de onda y espectro del espectro del archivo de entrada
 %Salida: audio_out.wav
 %--------------------------------------------------------------------------
-inFileName='./Audio/Procesado/audioOut.wav';
+%inFileName='./Audio/Procesado/audioOut.wav';
+[FileName,PathName] = uigetfile('*.*','Seleccionar archivo de audio de entrada');
+inFileName=strcat(PathName,FileName);
 %--------------------------------------------------------------------------
 [INy,INFs] = audioread(inFileName);
 info = audioinfo(inFileName);
@@ -16,7 +18,7 @@ t =  linspace(0,L/INFs, L);
 figure();
 subplot(2,1,1) 
 plot(t,INy) 
-title(strcat({'Espectro de: '}, inFileName))
+title(strcat({'Forma de onda: '}, inFileName))
 xlabel('Tiempo (Seg)')
 ylabel('Amplitud')
 

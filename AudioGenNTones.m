@@ -2,7 +2,9 @@
 %Genera N tonos de xxxHz
 %Salida: audioOut.wav
 %--------------------------------------------------------------------------
-outFileName='./Audio/Procesado/audioOut!.wav';
+%outFileName='./Audio/Procesado/audioOut!.wav';
+[FileName,PathName] = uigetfile('*.*','Seleccionar archivo de audio de salida');
+outFileName=strcat(PathName,FileName);
 toneFreqs = [50,1000]; %Vector de n tonos agreagados al archivo de entrada
 Duration = 5;
 OUTNbits=16; %16 bits

@@ -3,8 +3,12 @@
 %Entrada: audio_in.wav
 %Salida: audio_out.wav
 %--------------------------------------------------------------------------
-inFileName='./Audio/Muestras/audio_1.wav';
-outFileName='./Audio/Procesado/audio_out!.wav';
+%inFileName='./Audio/Muestras/audio_1.wav';
+[FileName,PathName] = uigetfile('*.*','Seleccionar archivo de audio de entrada');
+inFileName=strcat(PathName,FileName);
+%outFileName='./Audio/Procesado/audio_out!.wav';
+[FileName,PathName] = uigetfile('*.*','Seleccionar archivo de audio de salida');
+outFileName=strcat(PathName,FileName);
 toneFreqs = [50,500,1000]; %Vector de n tonos agreagados al archivo de entrada
 OUTNbits=16; %16 bits
 OUTFs = 16000;      
